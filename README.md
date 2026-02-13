@@ -160,6 +160,19 @@ handler.Add("mykey", &subscriber.MySubscriber{})
 
 使用 `service.CreateAllDayEvent` 创建全天事件，或直接构造 `service.Event` 结构体创建带时间的事件。
 
+## 编译
+- make / make all - 构建二进制文件
+- make build - 构建二进制文件（带优化标志）
+- make run - 直接运行应用程序
+- make test - 运行测试（包含竞态检测和覆盖率）
+- make clean - 清理构建产物
+- make fmt - 格式化代码
+- make vet - 运行go vet检查
+- make lint - 运行golangci-lint（如已安装）
+- make deps - 下载依赖
+- make tidy - 整理go.mod和go.sum
+- make help - 显示所有可用命令
+
 ## 许可证
 
 详见 [LICENSE](file:///Users/mycharm/Downloads/go-github/src/github.com/notes-bin/calendar-go/LICENSE) 文件。
