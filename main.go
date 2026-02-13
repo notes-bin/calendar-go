@@ -3,9 +3,11 @@ package main
 
 import (
 	"embed"
+	"flag"
 	"fmt"
 	"html/template"
 	"log"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -20,9 +22,28 @@ import (
 //go:embed templates/*
 var templatesFS embed.FS
 
+var (
+	Version   = "dev"
+	Commit    = "unknown"
+	Branch    = "unknown"
+	BuildTime = "unknown"
+)
+
 // main 程序入口函数
 // 初始化配置、创建服务器并启动服务
 func main() {
+	showVersion := flag.Bool("V", false, "show version information")
+	flag.Parse()
+
+	if *showVersion {
+		fmt.Printf("Version:   %-20s\n", Version)
+		fmt.Printf("Commit:    %-20s\n", Commit)
+		fmt.Printf("Branch:    %-20s\n", Branch)
+		fmt.Printf("BuildTime: %-20s\n", BuildTime)
+		os.Exit(0)
+	}
+
+	log.Printf("Version: %s\nCommit: %s\nBranch: %s\nBuildTime: %s\n", Version, Commit, Branch, BuildTime)
 	cfg := config.Load()
 
 	if err := run(cfg); err != nil {
