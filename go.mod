@@ -2,7 +2,10 @@ module github.com/notes-bin/calendar-go
 
 go 1.25.6
 
-require github.com/gin-gonic/gin v1.11.0
+require (
+	github.com/gin-gonic/gin v1.11.0
+	github.com/notes-bin/cron v0.0.18
+)
 
 require (
 	github.com/bytedance/sonic v1.14.0 // indirect

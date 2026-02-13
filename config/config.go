@@ -7,8 +7,9 @@ import (
 )
 
 type Config struct {
-	Port     int
-	CacheTTL time.Duration
+	Port       int
+	CacheTTL   time.Duration
+	JuheAPIKey string
 }
 
 func Load() *Config {
@@ -26,8 +27,11 @@ func Load() *Config {
 		}
 	}
 
+	juheAPIKey := os.Getenv("JUHE_API_KEY")
+
 	return &Config{
-		Port:     port,
-		CacheTTL: cacheTTL,
+		Port:       port,
+		CacheTTL:   cacheTTL,
+		JuheAPIKey: juheAPIKey,
 	}
 }
